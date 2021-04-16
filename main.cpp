@@ -1,26 +1,36 @@
 #include <iostream>
+#include <cstdlib>
 #include <math.h>
 
 using namespace std;
 
-int main() {
-  
+int binaryToDecimal(int bin);
+
+int main()
+{
+  int binA;
+
+  cin>>binA;
+
+  cout<<binaryToDecimal(binA);
+
+  return 0;
+}
+
+//Função intermediária para converter numeros binários em decimais.
+int binaryToDecimal(int bin){
   int pot2=0,pos, soma=0;
-  string bin;
+  string s;
 
-  cout<<"Numero binario: ";
-  cin>> bin;
+  s = to_string(bin);
+  pos = s.length();
 
-  pos = bin.length();
-  for(int i = (bin.length() - 1); i >= 0; i--){
-    if(bin[i]=='1'){
+  for(int i = (s.length() - 1); i >= 0; i--){
+    if(s[i]=='1'){
       soma += pow(2, pot2);
     }
     pos--;
     pot2++;
   }
-  cout<<"Binario convertido para decimal = "<<soma;
-
-  cout<<endl<<endl;
-  return 0;
+  return soma;
 }
