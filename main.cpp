@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <cstdlib>
 #include <math.h>
 
@@ -10,11 +9,39 @@ void decimalToBinary (int dec);
 
 int main()
 {
-  int binA, res;
+  //Caractere que determinará o tipo de operação (+,-,*,/,%)
+  char op;
+  //Variaveis da entrada (numeros binários)
+  int binA, binB;
+  //Variaveis da entrada convertidas para numeros decimais
+  int convBinA, convBinB, res=0;
 
+  cin>>op;
   cin>>binA;
+  cin>>binB;
 
-  decimalToBinary(binA);
+  convBinA = binaryToDecimal(binA);
+  convBinB = binaryToDecimal(binB);
+
+  switch (op)
+  {
+    case '+':
+      res = convBinA + convBinB;
+    break;
+    case '-':
+      res = convBinA - convBinB;
+    break;
+    case '*':
+      res = convBinA * convBinB;
+    break;
+    case '/':
+      res = convBinA / convBinB;
+    break;
+    default:
+      res = convBinA % convBinB;
+  }
+
+  decimalToBinary (res);
 
   return 0;
 }
