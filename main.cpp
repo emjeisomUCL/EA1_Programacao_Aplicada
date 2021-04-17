@@ -1,18 +1,20 @@
 #include <iostream>
+#include <string>
 #include <cstdlib>
 #include <math.h>
 
 using namespace std;
 
 int binaryToDecimal(int bin);
+void decimalToBinary (int dec);
 
 int main()
 {
-  int binA;
+  int binA, res;
 
   cin>>binA;
 
-  cout<<binaryToDecimal(binA);
+  decimalToBinary(binA);
 
   return 0;
 }
@@ -33,4 +35,40 @@ int binaryToDecimal(int bin){
     pot2++;
   }
   return soma;
+}
+
+//Função para converter deciamal para binário
+void decimalToBinary (int dec){
+  
+  int div, convert, cont=2;
+  convert = dec;
+
+  if(dec <= 0){
+    cout<<"00000000";
+  }else{
+    while (dec / 2 != 1){
+      div = dec / 2;
+      dec = div;
+      cont++;
+    }
+  }
+
+  int bin[cont];
+  for (int i = (cont - 1); i >= 0; i--)
+  {
+    if (convert % 2 == 0)
+    {
+      bin[i] = 0;
+    }
+    else
+    {
+    bin[i] = 1;
+    }
+    convert = convert / 2;
+   }
+  
+  for (int i = 0; i < cont; i++)
+  {
+    cout<<bin[i];
+  }
 }
